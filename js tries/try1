@@ -1,0 +1,49 @@
+const form__email= document.querySelector('#form__email')
+const form__button= document.querySelector('#form__button')
+const form__list= document.querySelector('#form__list')
+
+let email__info=[]
+
+
+let addEmail = function(){        
+    form__list.innerHTML=''
+    
+    
+    let email__value = form__email.value    
+    form__email.value=''
+    
+    email__info.push(`${email__value}`)
+
+    //let delete__btn= document.createElement('div')
+    //delete__btn.setAttribute('type','button')
+    //delete__btn.innerHTML = ' <button class="form__button" > Delete </button>  '
+   // form__list.appendChild(delete__btn)
+
+
+    for (let i =0; i<email__info.length; i++){
+        
+        
+        if (email__info[i]=='') {
+            email__info.splice(i,1,'Nothing? Great!!')
+        }
+        
+        if (i==5) form__list.innerHTML +='Stop doing that!!'
+
+        let delete__btn= document.createElement('div')
+        delete__btn.innerHTML = ' <button class="form__button"  > Delete </button>  '
+        form__list.appendChild(delete__btn)
+
+
+        form__list.innerHTML += `${i+1} Ur email or smth nasty is: ${email__info[i]}   <br>`
+        
+        
+        delete__btn.onclick = () =>{
+            console.log('123123')
+        }
+        
+    }
+
+}
+
+form__button.addEventListener('click',addEmail)
+
